@@ -43,7 +43,7 @@ if ('id' in commander === false || 'company' in commander === false || 'token' i
 
 switch (commander.action) {
   case 'tasklist': {
-    fetch(`https://${commander.company}.eu.teamwork.com/projects/${commander.project}/tasklists.json`, { 
+    fetch(`https://${commander.company}.teamwork.com/projects/${commander.project}/tasklists.json`, { 
       method: 'GET',
       headers: { 'Authorization': `BASIC ${btoa(commander.token + ":xxx")}` },
     })
