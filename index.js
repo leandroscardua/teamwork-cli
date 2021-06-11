@@ -52,7 +52,7 @@ switch (commander.action) {
     break
   }
   case 'tasks': {
-    fetch(`https://${commander.company}.eu.teamwork.com/tasklists/${commander.taskList}/tasks.json`, { 
+    fetch(`https://${commander.company}.teamwork.com/tasklists/${commander.taskList}/tasks.json`, { 
       method: 'GET',
       headers: { 'Authorization': `BASIC ${btoa(commander.token + ":xxx")}` },
     })
@@ -68,7 +68,7 @@ switch (commander.action) {
     break
   }
   case 'selftasks': {
-    fetch(`https://${commander.company}.eu.teamwork.com/tasklists/${commander.taskList}/tasks.json`, { 
+    fetch(`https://${commander.company}.teamwork.com/tasklists/${commander.taskList}/tasks.json`, { 
       method: 'GET',
       headers: { 'Authorization': `BASIC ${btoa(commander.token + ":xxx")}` },
     })
@@ -96,7 +96,7 @@ switch (commander.action) {
         "tags": ""
       }
     }
-    fetch(`https://${commander.company}.eu.teamwork.com/tasks/${commander.todoItem}/time_entries.json`, {
+    fetch(`https://${commander.company}.teamwork.com/tasks/${commander.todoItem}/time_entries.json`, {
       method: 'POST',
       headers: { 'Authorization': `BASIC ${btoa(commander.token + ":xxx")}` },
       body: JSON.stringify(time)
@@ -118,7 +118,7 @@ switch (commander.action) {
         "tags": ""
       }
     }
-    fetch(`https://${commander.company}.eu.teamwork.com/tasks/${commander.todoItem}/time_entries.json`, {
+    fetch(`https://${commander.company}.teamwork.com/tasks/${commander.todoItem}/time_entries.json`, {
       method: 'POST',
       headers: { 'Authorization': `BASIC ${btoa(commander.token + ":xxx")}` },
       body: JSON.stringify(time)
@@ -146,7 +146,7 @@ switch (commander.action) {
             "tags": ""
           }
         }
-        fetch(`https://${commander.company}.eu.teamwork.com/tasks/${commander.todoItem}/time_entries.json`, {
+        fetch(`https://${commander.company}.teamwork.com/tasks/${commander.todoItem}/time_entries.json`, {
           method: 'POST',
           headers: { 'Authorization': `BASIC ${btoa(commander.token + ":xxx")}` },
           body: JSON.stringify(time)
@@ -176,7 +176,7 @@ switch (commander.action) {
             "tags": ""
           }
         }
-        fetch(`https://${commander.company}.eu.teamwork.com/tasks/${commander.todoItem}/time_entries.json`, {
+        fetch(`https://${commander.company}.teamwork.com/tasks/${commander.todoItem}/time_entries.json`, {
           method: 'POST',
           headers: { 'Authorization': `BASIC ${btoa(commander.token + ":xxx")}` },
           body: JSON.stringify(time)
