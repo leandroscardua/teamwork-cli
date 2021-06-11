@@ -9,6 +9,11 @@ commander
   .version('0.1.0')
   .option('-i, --id <a>', 'your people id')
   .option('-c, --company <a>', 'the company id')
+  .option('-b, --billable <a>', '1 for yes 0 to no')
+  .option('-s, --startedtime <a>', 'started time')
+  .option('-h, --hours <a>', 'Hours spend on it')
+  .option('-m, --minutes <a>', 'Minutes spend on it')
+  .option('-z, --descri <a>', 'the description of the task')
   .option('-t, --token <a>', 'the token to authenticate with')
   .option('-a, --action <a>', 'the action to run')
   .option('-p, --project <a>', 'the project id to run the action against')
@@ -20,10 +25,10 @@ commander
       Examples :
 
       ## Ajoute 8 heures de travail par jour pendant 1 semaine à partir de la date donnée
-      node index.js --company <company> --token <token> --project <project> --id <id> --action filltime_for_week --todo-item <todoitem> --date <date>
+      node index.js --company <company> --token <token> --project <project> --id <id> --action filltime_for_week --todo-item <todoitem> --date <date> --descri <description> --startedtime <time> --totaltime <time> --billable <0 or 1> --hours <if applicable, not 0> --minutes <if applicable, not 0>
 
       ## Ajoute 8 heures de travail par jour pendant 1 semaine à partir de la date du jour
-      node index.js --company <company> --token <token> --project <project> --id <id> --action filltime_for_aweek --todo-item <todoitem>
+      node index.js --company <company> --token <token> --project <project> --id <id> --action filltime_for_aweek --todo-item <todoitem> ---descri <description> --startedtime <time> --totaltime <time> --billable <0 or 1>
     `)
   })
   .parse(process.argv);
@@ -86,13 +91,13 @@ switch (commander.action) {
   case 'filltime_default': {
     const time = {
       "time-entry": {
-        "description": `la personne ${commander.id} à ajouter ce temps depuis le cli ALTIMA \\o/`,
+        "description": commander.descri ,
         "person-id": commander.id,
         "date": moment().format('YYYYMMDD'),
-        "time": "09:00",
-        "hours": "8",
-        "minutes": "0",
-        "isbillable": "0",
+        "time": commander.startedtime ,
+        "hours": commander.hours,
+        "minutes": commander.minutes ,
+        "isbillable": commander.billable ,
         "tags": ""
       }
     }
@@ -108,12 +113,12 @@ switch (commander.action) {
   case 'filltime_default_customDate': {
     const time = {
       "time-entry": {
-        "description": `la personne ${commander.id} à ajouter ce temps depuis le cli ALTIMA \\o/`,
+        "description": commander.zica ,
         "person-id": commander.id,
         "date": moment(commander.date, ['DD/MM/YYYY']).format('YYYYMMDD'),
         "time": "09:00",
-        "hours": "8",
-        "minutes": "0",
+        "hours": commander.hours ,
+        "minutes": commander.minutes ,
         "isbillable": "0",
         "tags": ""
       }
@@ -136,7 +141,7 @@ switch (commander.action) {
         console.log('HWK : %s', baseDate.format('DD/MM/YYYY'))
         const time = {
           "time-entry": {
-            "description": `la personne ${commander.id} à ajouter ce temps depuis le cli ALTIMA \\o/`,
+            "description": `test task`,
             "person-id": commander.id,
             "date": baseDate.format('YYYYMMDD'),
             "time": "09:00",
@@ -166,7 +171,7 @@ switch (commander.action) {
         console.log(baseDate.format('DD/MM/YYYY'))
         const time = {
           "time-entry": {
-            "description": `la personne ${commander.id} à ajouter ce temps depuis le cli ALTIMA \\o/`,
+            "description": `test task`,
             "person-id": commander.id,
             "date": baseDate.format('YYYYMMDD'),
             "time": "09:00",
